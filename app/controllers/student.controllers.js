@@ -1,14 +1,15 @@
 const Student = require("../model/student.model");
 
+
 exports.create = (req, res) => {
   const student = new Student({
-    name: req.body.name,
-    fathername: req.body.fathername,
-    dateofbirth: req.body.dateofbirth,
-    bloodgroup: req.body.bloodgroup,
-    image: req.body.image,
-    gender: req.body.gender,
-    address: req.body.address
+    masv: req.body.masv,
+    tensv: req.body.tensv,
+    lop: req.body.lop,
+    khoa: req.body.khoa,
+    slug: req.body.slug,
+    diachi: req.body.diachi,
+    sodienthoai: req.body.sodienthoai,
   });
 
   student
@@ -64,13 +65,13 @@ exports.update = (req, res) => {
   Student.findByIdAndUpdate(
     req.params.studentId,
     {
-      name: req.body.name,
-      fathername: req.body.fathername,
-      dateofbirth: req.body.dateofbirth,
-      bloodgroup: req.body.bloodgroup,
-      image: req.body.image,
-      gender: req.body.gender,
-      address: req.body.address
+      masv: req.body.masv,
+      tensv: req.body.tensv,
+      lop: req.body.lop,
+      khoa: req.body.khoa,
+      slug: req.body.slug,
+      diachi: req.body.diachi,
+      sodienthoai: req.body.sodienthoai,
     },
     { new: true }
   )
