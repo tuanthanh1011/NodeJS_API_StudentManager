@@ -7,7 +7,6 @@ exports.create = (req, res) => {
     tensv: req.body.tensv,
     lop: req.body.lop,
     khoa: req.body.khoa,
-    slug: req.body.slug,
     diachi: req.body.diachi,
     sodienthoai: req.body.sodienthoai,
   });
@@ -39,11 +38,11 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  Student.findById(req.params.studentId)
+  Student.findOne(req.params.slug)
     .then(data => {
       if (!data) {
         return res.status(404).send({
-          message: "No data found with " + req.params.studentId
+          message: "No data found with " + req.params.slug
         });
       }
       console.log(" Student recored find by ID");
@@ -52,11 +51,11 @@ exports.findOne = (req, res) => {
     .catch(err => {
       if (err.kind === "ObjectId") {
         return res.status(404).send({
-          message: "No recored found with " + req.params.studentId
+          message: "No recored found with " + req.params.slug
         });
       }
       return res.status(500).send({
-        message: "Error to retrieving student data " + req.params.studentId
+        message: "Error to retrieving student data " + req.params.slug
       });
     });
 };
@@ -69,7 +68,6 @@ exports.update = (req, res) => {
       tensv: req.body.tensv,
       lop: req.body.lop,
       khoa: req.body.khoa,
-      slug: req.body.slug,
       diachi: req.body.diachi,
       sodienthoai: req.body.sodienthoai,
     },
